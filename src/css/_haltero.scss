@@ -1,7 +1,8 @@
+@use "sass:map";
 @mixin secretary($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $fonts: map-get($map: $theme, $key: 'fonts');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $fonts: map.get($map: $theme, $key: 'fonts');
 
   .haltero-secretary {
     gap: 8px;
@@ -9,15 +10,15 @@
     row-gap: 16px !important;
 
     padding: 16px;
-    background-color: map-get($map: $colors, $key: 'background_2');
-    border-radius: map-get($map: $radius, $key: "large");
+    background-color: map.get($map: $colors, $key: 'background_2');
+    border-radius: map.get($map: $radius, $key: "large");
 
     input {
       height: 54px;
       width: 100%;
       padding: 0 16px;
-      border: 1px solid map-get($map: $colors, $key: 'content');
-      border-radius: map-get($map: $radius, $key: "small");
+      border: 1px solid map.get($map: $colors, $key: 'content');
+      border-radius: map.get($map: $radius, $key: "small");
       box-sizing: border-box;
     }
   }
@@ -47,9 +48,9 @@
 
       width: 100%;
       height: 54px;
-      border: 2px solid map-get($map: $colors, $key: 'content');
-      background: map-get($map: $colors, $key: 'content');
-      border-radius: map-get($map: $radius, $key: 'small');
+      border: 2px solid map.get($map: $colors, $key: 'content');
+      background: map.get($map: $colors, $key: 'content');
+      border-radius: map.get($map: $radius, $key: 'small');
       cursor: pointer;
     }
 
@@ -67,16 +68,16 @@
       left: 0;
       right: 50%;
       content: '';
-      background: map-get($map: $colors, $key: 'negative');
+      background: map.get($map: $colors, $key: 'negative');
       cursor: pointer;
-      border-radius: map-get($map: $radius, $key: 'small') - 2px;
+      border-radius: map.get($map: $radius, $key: 'small') - 2px;
       transition: all .3s;
     }
 
     input[type="checkbox"]:checked+label:after {
       left: 50%;
       right: 0;
-      background: map-get($map: $colors, $key: 'positive');
+      background: map.get($map: $colors, $key: 'positive');
     }
   }
 
@@ -105,6 +106,6 @@
   }
 
   .haltero-color-main {
-    color: map-get($map: $colors, $key: 'main');
+    color: map.get($map: $colors, $key: 'main');
   }
 }

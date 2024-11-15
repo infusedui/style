@@ -1,59 +1,69 @@
 // Import all themes
-@import '../themes';
+@use '../themes';
 
 // Import css worker
-@import '../worker';
+@use '../worker';
 
 // Import reset all base css
-@import '../reset';
+@use '../reset';
 
 // Import base external import
-@import '../import';
+@use '../import';
+@use "../theme/default";
+@use "../theme/default_dark";
+@use "../theme/dtc";
+@use "../theme/dtc_dark";
+@use "../theme/haltero";
+@use "../theme/haltero_dark";
+@use "../theme/pooks";
+@use "../theme/pooks_dark";
+@use "../theme/red";
+@use "../theme/red_dark";
 
 
 // Include worker and theme
-@include worker($theme__default);
+@include worker.worker(default.$theme__default);
 
 // Details all theme with class
 // .light { @include worker($theme__themeName); }
 
-.teaui-schema {
+.infusedui-schema {
 
   // Light
   &.theme-dtc {
-    @include worker($theme__dtc);
+    @include worker.worker(dtc.$theme__dtc);
   }
 
   &.theme-pooks {
-    @include worker($theme__pooks);
+    @include worker.worker(pooks.$theme__pooks);
   }
 
   &.theme-haltero {
-    @include worker($theme__haltero);
+    @include worker.worker(haltero.$theme__haltero);
   }
 
   &.theme-red {
-    @include worker($theme__red);
+    @include worker.worker(red.$theme__red);
   }
 
   // Dark
   &.theme-default-dark {
-    @include worker($theme__default_dark);
+    @include worker.worker(default_dark.$theme__default_dark);
   }
 
   &.theme-pooks-dark {
-    @include worker($theme__pooks_dark);
+    @include worker.worker(pooks_dark.$theme__pooks_dark);
   }
 
   &.theme-dtc-dark {
-    @include worker($theme__dtc_dark);
+    @include worker.worker(dtc_dark.$theme__dtc_dark);
   }
 
   &.theme-haltero-dark {
-    @include worker($theme__haltero_dark);
+    @include worker.worker(haltero_dark.$theme__haltero_dark);
   }
 
   &.theme-red-dark {
-    @include worker($theme__red_dark);
+    @include worker.worker(red_dark.$theme__red_dark);
   }
 }

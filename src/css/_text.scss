@@ -1,8 +1,9 @@
+@use "sass:map";
 @use "sass:math";
 
 @mixin global($theme) {
-  $colors: map-get($theme, 'colors');
-  $fonts: map-get($theme, 'fonts');
+  $colors: map.get($theme, 'colors');
+  $fonts: map.get($theme, 'fonts');
 
   h1,
   h2,
@@ -24,7 +25,7 @@
   button {
     color: inherit;
     text-decoration: none;
-    font-family: map-get($fonts, 'text');
+    font-family: map.get($fonts, 'text');
   }
 
   p,
@@ -78,15 +79,15 @@
 
   p code {
     font-family: 'Courier New', Courier, monospace;
-    background: map-get($map: $colors, $key: 'main');
+    background: map.get($map: $colors, $key: 'main');
     padding: 2px 4px;
     border-radius: 4px;
   }
 }
 
 @mixin title($theme) {
-  $fonts: map-get($theme, 'fonts');
-  $fontsize: map-get($theme, 'fontsize');
+  $fonts: map.get($theme, 'fonts');
+  $fontsize: map.get($theme, 'fontsize');
 
   div.title-container {
     display: grid;
@@ -113,7 +114,7 @@
   h3,
   h4 {
     line-height: 1.2em;
-    font-family: map-get($fonts, 'title');
+    font-family: map.get($fonts, 'title');
 
     span {
       font-family: inherit;
@@ -123,13 +124,13 @@
   h5,
   h6 {
     line-height: 1.2em;
-    font-family: map-get($fonts, 'text');
+    font-family: map.get($fonts, 'text');
   }
 
   h1 {
     padding-bottom: 16px;
 
-    font-size: map-get($fontsize, 'h1');
+    font-size: map.get($fontsize, 'h1');
     font-weight: 300;
   }
 
@@ -137,7 +138,7 @@
     padding-top: 44px;
     padding-bottom: 16px;
 
-    font-size: map-get($fontsize, 'h2');
+    font-size: map.get($fontsize, 'h2');
     font-weight: 500;
   }
 
@@ -145,7 +146,7 @@
     padding-top: 38px;
     padding-bottom: 16px;
 
-    font-size: map-get($fontsize, 'h3');
+    font-size: map.get($fontsize, 'h3');
     font-weight: 500;
   }
 
@@ -153,7 +154,7 @@
     padding-top: 32px;
     padding-bottom: 16px;
 
-    font-size: map-get($fontsize, 'h4');
+    font-size: map.get($fontsize, 'h4');
     font-weight: 500;
   }
 
@@ -161,7 +162,7 @@
     padding-top: 24px;
     padding-bottom: 12px;
 
-    font-size: map-get($fontsize, 'h5');
+    font-size: map.get($fontsize, 'h5');
     font-weight: 500;
   }
 
@@ -169,7 +170,7 @@
     padding-top: 16px;
     padding-bottom: 8px;
 
-    font-size: map-get($fontsize, 'h6');
+    font-size: map.get($fontsize, 'h6');
   }
 
   h1,
@@ -186,8 +187,8 @@
 }
 
 @mixin link($theme) {
-  $colors: map-get($theme, 'colors');
-  $fonts: map-get($theme, 'fonts');
+  $colors: map.get($theme, 'colors');
+  $fonts: map.get($theme, 'fonts');
 
   p,
   ul,
@@ -196,12 +197,12 @@
   article div {
     a {
       background:
-        linear-gradient(to top, map-get($colors, 'main') 0%,
-          map-get($colors, 'main') 10%,
+        linear-gradient(to top, map.get($colors, 'main') 0%,
+          map.get($colors, 'main') 10%,
           transparent 10.01%) no-repeat bottom left;
       background-size: 100% 100%;
       outline-color:
-        rgba($color: map-get($colors, 'main'), $alpha: .3);
+        rgba($color: map.get($colors, 'main'), $alpha: .3);
       outline-style: solid;
       outline-width: 0;
 
@@ -219,7 +220,7 @@
       &:focus,
       &:target {
         outline-width: 4px;
-        border-color: map-get($colors, 'background_1');
+        border-color: map.get($colors, 'background_1');
         border-radius: 4px;
       }
     }
@@ -250,20 +251,20 @@
       font-size: 12px;
     }
 
-    font-family: map-get($fonts, 'text');
+    font-family: map.get($fonts, 'text');
   }
 }
 
 @mixin blockquote($theme) {
-  $colors: map-get($theme, 'colors');
-  $fonts: map-get($theme, 'fonts');
-  $radius: map-get($theme, 'radius');
+  $colors: map.get($theme, 'colors');
+  $fonts: map.get($theme, 'fonts');
+  $radius: map.get($theme, 'radius');
 
   blockquote {
     padding: 8px 16px;
     margin-bottom: 24px;
     margin-top: 24px;
-    border-left: 4px solid map-get($map: $colors, $key: 'main');
+    border-left: 4px solid map.get($map: $colors, $key: 'main');
 
     p:first-child {
       margin-top: 0
@@ -276,8 +277,8 @@
 }
 
 @mixin adjust($theme) {
-  $colors: map-get($map: $theme, $key: "colors");
-  $schemas: map-get($map: $theme, $key: "color_schemas");
+  $colors: map.get($map: $theme, $key: "colors");
+  $schemas: map.get($map: $theme, $key: "color_schemas");
 
   &.text {
     &.vertical-align-start {
@@ -370,18 +371,18 @@
 
     @if($schemas =="default") {
       &.color-inverted {
-        color: map-get($map: $colors, $key: 'background_1');
+        color: map.get($map: $colors, $key: 'background_1');
       }
     }
 
     @if($schemas =="dark") {
       &.dark-color-inverted {
-        color: map-get($map: $colors, $key: 'background_1');
+        color: map.get($map: $colors, $key: 'background_1');
       }
     }
 
     &.color-main {
-      color: map-get($map: $colors, $key: 'main');
+      color: map.get($map: $colors, $key: 'main');
     }
 
     &.filter-difference {
@@ -391,10 +392,10 @@
 }
 
 @mixin special($theme) {
-  $fonts: map-get($map: $theme, $key: 'fonts');
+  $fonts: map.get($map: $theme, $key: 'fonts');
 
   &.company-title {
-    font-family: map-get($map: $fonts, $key: 'company');
+    font-family: map.get($map: $fonts, $key: 'company');
     font-size: 96px;
     font-weight: 900;
 

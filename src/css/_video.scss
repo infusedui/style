@@ -1,10 +1,11 @@
+@use "sass:map";
 @mixin player($theme) {
-  $radius: map-get($map: $theme, $key: 'radius');
-  $colors: map-get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
 
   video {
-    border: 2px solid map-get($map: $colors, $key: 'content');
-    border-radius: map-get($map: $radius, $key: "large");
+    border: 2px solid map.get($map: $colors, $key: 'content');
+    border-radius: map.get($map: $radius, $key: "large");
   }
 
   &.video-player-container {
