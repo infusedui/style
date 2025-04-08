@@ -1,6 +1,7 @@
+@use "sass:map";
 @mixin line($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.status {
     display: grid;
@@ -8,12 +9,12 @@
     grid-auto-rows: min-content;
     row-gap: 8px;
 
-    background: map-get($map: $colors, $key: 'background_2');
-    border-radius: map-get($map: $radius, $key: 'medium');
+    background: map.get($map: $colors, $key: 'background_2');
+    border-radius: map.get($map: $radius, $key: 'medium');
     padding: 16px;
 
     .status-bar {
-      border-radius: map-get($map: $radius, $key: 'small');
+      border-radius: map.get($map: $radius, $key: 'small');
     }
   }
 
@@ -35,11 +36,11 @@
     aspect-ratio: 1/1;
 
     &.state-positive {
-      background-color: map-get($map: $colors, $key: 'positive');
+      background-color: map.get($map: $colors, $key: 'positive');
     }
 
     &.state-negative {
-      background-color: map-get($map: $colors, $key: 'negative');
+      background-color: map.get($map: $colors, $key: 'negative');
     }
   }
 }

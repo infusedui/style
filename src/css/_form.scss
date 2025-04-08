@@ -1,7 +1,10 @@
+@use "sass:color";
+@use "sass:map";
+
 @mixin global($theme) {
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.form {
     display: grid;
@@ -20,11 +23,11 @@
 
     padding: 8px;
     margin: 0;
-    background: map-get($map: $colors, $key: 'background_2');
-    border-radius: map-get($map: $radius, $key: 'small') - 4px;
+    background: map.get($map: $colors, $key: 'background_2');
+    border-radius: map.get($map: $radius, $key: 'small') - 4px;
 
     &.little {
-      font-size: map-get($map: $fontsize, $key: 'small');
+      font-size: map.get($map: $fontsize, $key: 'small');
     }
 
     p {
@@ -41,11 +44,11 @@
 }
 
 @mixin container($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fonts: map-get($map: $theme, $key: 'fonts');
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $color_schemas: map-get($map: $theme, $key: 'color_schemas');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fonts: map.get($map: $theme, $key: 'fonts');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $color_schemas: map.get($map: $theme, $key: 'color_schemas');
 
   &.form-container {
     display: grid;
@@ -95,26 +98,26 @@
       min-height: 20px;
       padding: 0 16px;
 
-      font-family: map-get($map: $fonts, $key: 'text');
-      font-size: map-get($map: $fontsize, $key: 'text');
+      font-family: map.get($map: $fonts, $key: 'text');
+      font-size: map.get($map: $fontsize, $key: 'text');
 
       span.form-required {
         display: flex;
 
-        border-radius: map-get($radius, "large");
-        background: map-get($map: $colors, $key: 'main');
+        border-radius: map.get($radius, "large");
+        background: map.get($map: $colors, $key: 'main');
         padding: 4px 8px;
 
-        color: map-get($map: $colors, $key: 'background_1');
-        font-size: map-get($map: $fontsize, $key: 'small');
+        color: map.get($map: $colors, $key: 'background_1');
+        font-size: map.get($map: $fontsize, $key: 'small');
       }
     }
 
     .form-tagline {
       padding: 0 16px;
 
-      color: map-get($map: $colors, $key: 'content');
-      font-size: map-get($map: $fontsize, $key: 'small');
+      color: map.get($map: $colors, $key: 'content');
+      font-size: map.get($map: $fontsize, $key: 'small');
 
       &:is(a) {
         text-decoration: underline;
@@ -137,17 +140,17 @@
     min-height: 48px;
     border-width: 1px;
     border-style: solid;
-    border-color: rgba(map-get($colors, "content"), .3);
-    background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
-    border-radius: map-get($radius, "small");
+    border-color: rgba(map.get($colors, "content"), .3);
+    background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
+    border-radius: map.get($radius, "small");
     box-sizing: border-box;
     padding: 3px;
     outline-width: 0;
     outline-style: solid;
     outline-color:
-      rgba($color: map-get($colors, 'main'), $alpha: .3);
+      rgba($color: map.get($colors, 'main'), $alpha: .3);
 
-    color: map-get($map: $colors, $key: 'content');
+    color: map.get($map: $colors, $key: 'content');
 
     transition:
       border-color .3s ease-in-out,
@@ -156,7 +159,7 @@
 
     &.state-focus,
     &:focus-within {
-      border-color: map-get($map: $colors, $key: 'main');
+      border-color: map.get($map: $colors, $key: 'main');
       outline-width: 4px;
     }
 
@@ -169,22 +172,22 @@
     }
 
     &.state-negative {
-      border-color: map-get($map: $colors, $key: 'negative');
-      background-color: rgba($color: map-get($colors, 'negative'), $alpha: .2);
+      border-color: map.get($map: $colors, $key: 'negative');
+      background-color: rgba($color: map.get($colors, 'negative'), $alpha: .2);
 
       @extend .animation-error;
 
       .form-message {
-        color: map-get($map: $colors, $key: 'negative');
+        color: map.get($map: $colors, $key: 'negative');
       }
     }
 
     &.state-positive {
-      border-color: map-get($map: $colors, $key: 'positive');
-      background-color: rgba($color: map-get($colors, 'positive'), $alpha: .1);
+      border-color: map.get($map: $colors, $key: 'positive');
+      background-color: rgba($color: map.get($colors, 'positive'), $alpha: .1);
 
       .form-message {
-        color: map-get($map: $colors, $key: 'positive');
+        color: map.get($map: $colors, $key: 'positive');
       }
     }
 
@@ -192,18 +195,18 @@
       border-radius: 2px;
       padding: 8px;
       background-color:
-        rgba($color: map-get($map: $colors, $key: 'main'), $alpha: .3);
+        rgba($color: map.get($map: $colors, $key: 'main'), $alpha: .3);
 
-      font-size: map-get($map: $fontsize, $key: 'small');
+      font-size: map.get($map: $fontsize, $key: 'small');
     }
 
     input:focus+.form-max-length,
     textarea:focus+.form-max-length {
-      background-color: darken($color: map-get($colors, "main"), $amount: 60%);
-      border-color: rgba(map-get($colors, "main"), .3);
+      background-color: color.adjust($color: map.get($colors, "main"), $lightness: -60%);
+      border-color: rgba(map.get($colors, "main"), .3);
 
       @if ($color_schemas =="default") {
-        background-color: lighten($color: map-get($colors, "main"), $amount: 20%);
+        background-color: color.adjust($color: map.get($colors, "main"), $lightness: 20%);
       }
     }
 
@@ -216,11 +219,11 @@
       padding: 8px;
       border-width: 1px;
       border-style: solid;
-      border-color: rgba(map-get($colors, "content"), .3);
-      border-radius: map-get($map: $radius, $key: 'medium') - 8px;
-      background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+      border-color: rgba(map.get($colors, "content"), .3);
+      border-radius: map.get($map: $radius, $key: 'medium') - 8px;
+      background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
 
-      font-size: map-get($map: $fontsize, $key: 'small');
+      font-size: map.get($map: $fontsize, $key: 'small');
       font-weight: 500;
       white-space: nowrap;
 
@@ -251,11 +254,11 @@
 }
 
 @mixin input($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fonts: map-get($map: $theme, $key: 'fonts');
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $color_schemas: map-get($map: $theme, $key: 'color_schemas');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fonts: map.get($map: $theme, $key: 'fonts');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $color_schemas: map.get($map: $theme, $key: 'color_schemas');
 
   input,
   select,
@@ -274,16 +277,16 @@
 
     padding: 0 16px;
     min-height: 100%;
-    border-radius: map-get($map: $radius, $key: 'small') - 4px;
+    border-radius: map.get($map: $radius, $key: 'small') - 4px;
 
     color: inherit;
-    font-family: map-get($map: $fonts, $key: 'text');
+    font-family: map.get($map: $fonts, $key: 'text');
     text-decoration: none;
-    font-size: map-get($map: $fontsize, $key: 'text');
+    font-size: map.get($map: $fontsize, $key: 'text');
 
     @if($color_schemas =="dark") {
       option {
-        color: map-get($map: $colors, $key: 'background_1');
+        color: map.get($map: $colors, $key: 'background_1');
       }
     }
 
@@ -296,9 +299,9 @@
     &:read-only,
     &:disabled {
       cursor: not-allowed;
-      background-color: map-get($colors, 'content');
+      background-color: map.get($colors, 'content');
 
-      color: map-get($map: $colors, $key: 'background_1');
+      color: map.get($map: $colors, $key: 'background_1');
     }
   }
 
@@ -307,12 +310,12 @@
 
     &:disabled {
       cursor: not-allowed;
-      background-color: map-get($colors, 'content');
+      background-color: map.get($colors, 'content');
 
-      color: map-get($map: $colors, $key: 'background_1');
+      color: map.get($map: $colors, $key: 'background_1');
 
       +.icon {
-        color: map-get($map: $colors, $key: 'background_1');
+        color: map.get($map: $colors, $key: 'background_1');
       }
     }
   }
@@ -328,10 +331,10 @@
 }
 
 @mixin fileInput($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $schemas_colors: map-get($map: $theme, $key: 'schemas_colors');
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $schemas_colors: map.get($map: $theme, $key: 'schemas_colors');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
 
   &.form-file {
     display: grid;
@@ -344,7 +347,7 @@
       display: none;
 
       +label {
-        border-radius: map-get($map: $radius, $key: 'small') - 4px;
+        border-radius: map.get($map: $radius, $key: 'small') - 4px;
       }
     }
 
@@ -355,8 +358,8 @@
 }
 
 @mixin autocomplete($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.form-autocomplete-list-root {
     position: absolute;
@@ -366,11 +369,11 @@
 
     z-index: 2;
 
-    border-color: rgba(map-get($colors, "content"), .3);
+    border-color: rgba(map.get($colors, "content"), .3);
     border-width: 1px;
     border-style: solid;
-    border-radius: map-get($map: $radius, $key: 'small');
-    background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+    border-radius: map.get($map: $radius, $key: 'small');
+    background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
     box-shadow: 0 8px 12px rgba($color: #000000, $alpha: .2);
     padding: 8px 0;
   }
@@ -399,15 +402,15 @@
       min-height: 40px;
 
       &:hover {
-        background-color: map-get($map: $colors, $key: 'background_2');
+        background-color: map.get($map: $colors, $key: 'background_2');
       }
     }
   }
 }
 
 @mixin radio($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.form-radio {
 
@@ -427,7 +430,7 @@
       &:checked {
         +label {
           background-color:
-            rgba($color: map-get($colors, 'main'), $alpha: .3);
+            rgba($color: map.get($colors, 'main'), $alpha: .3);
         }
       }
 
@@ -437,13 +440,13 @@
         }
 
         +label:before {
-          border-color: map-get($map: $colors, $key: 'content');
+          border-color: map.get($map: $colors, $key: 'content');
           opacity: .5;
         }
 
         +label:hover:after,
         +label:after {
-          background-color: map-get($map: $colors, $key: 'content');
+          background-color: map.get($map: $colors, $key: 'content');
           opacity: 0;
         }
       }
@@ -456,10 +459,10 @@
 
         width: 24px;
         height: 24px;
-        border: 2px solid map-get($map: $colors, $key: 'main');
+        border: 2px solid map.get($map: $colors, $key: 'main');
         border-radius: 50%;
         box-sizing: border-box;
-        background-color: map-get($map: $colors, $key: 'background_1');
+        background-color: map.get($map: $colors, $key: 'background_1');
 
         content: '';
         transform: translateY(-50%);
@@ -474,7 +477,7 @@
         width: 16px;
         height: 16px;
         border: none;
-        background-color: map-get($map: $colors, $key: 'main');
+        background-color: map.get($map: $colors, $key: 'main');
         margin: 0 4px;
       }
     }
@@ -489,7 +492,7 @@
       min-height: 40px;
       padding-left: 56px;
       padding-right: 16px;
-      border-radius: map-get($map: $radius, $key: 'medium') - 4px;
+      border-radius: map.get($map: $radius, $key: 'medium') - 4px;
 
       cursor: pointer;
       transition:
@@ -499,9 +502,9 @@
 }
 
 @mixin checkbox($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fonts: map-get($map: $theme, $key: 'fonts');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fonts: map.get($map: $theme, $key: 'fonts');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.form-checkbox {
 
@@ -521,18 +524,18 @@
       &:checked {
         +label {
           background-color:
-            rgba($color: map-get($colors, 'main'), $alpha: .3);
+            rgba($color: map.get($colors, 'main'), $alpha: .3);
 
           &:after {
-            content: '\e925'; // Must change when teaui-icon was released
+            content: '\e925'; // Must change when infusedui-icon was released
           }
         }
       }
 
       &:indeterminate {
         +label:after {
-          content: '\e9b1'; // Must change when teaui-icon was released
-          color: map-get($map: $colors, $key: 'main');
+          content: '\e9b1'; // Must change when infusedui-icon was released
+          color: map.get($map: $colors, $key: 'main');
           opacity: 1;
           background-color: transparent;
         }
@@ -544,13 +547,13 @@
         }
 
         +label:before {
-          border-color: map-get($map: $colors, $key: 'content');
+          border-color: map.get($map: $colors, $key: 'content');
           opacity: .5;
         }
 
         +label:hover:after,
         +label:after {
-          background-color: map-get($map: $colors, $key: 'content');
+          background-color: map.get($map: $colors, $key: 'content');
           opacity: 0;
         }
       }
@@ -563,13 +566,13 @@
 
         width: 24px;
         height: 24px;
-        border: 2px solid map-get($map: $colors, $key: 'main');
+        border: 2px solid map.get($map: $colors, $key: 'main');
         border-radius: 4px;
         box-sizing: border-box;
-        background-color: map-get($map: $colors, $key: 'background_1');
+        background-color: map.get($map: $colors, $key: 'background_1');
 
         content: '';
-        font-family: map-get($map: $fonts, $key: 'icon');
+        font-family: map.get($map: $fonts, $key: 'icon');
         transform: translateY(-50%);
 
         transition:
@@ -586,9 +589,9 @@
         width: 24px;
         height: 24px;
         border: none;
-        background-color: map-get($map: $colors, $key: 'main');
+        background-color: map.get($map: $colors, $key: 'main');
 
-        color: map-get($map: $colors, $key: 'background_1');
+        color: map.get($map: $colors, $key: 'background_1');
         font-size: 20px;
       }
     }
@@ -603,7 +606,7 @@
       width: auto;
       min-width: 40px;
       min-height: 40px;
-      border-radius: map-get($map: $radius, $key: 'small') - 4px;
+      border-radius: map.get($map: $radius, $key: 'small') - 4px;
       padding-left: 48px;
 
       white-space: pre-wrap;
@@ -617,10 +620,10 @@
 }
 
 @mixin checkbox-line($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fonts: map-get($map: $theme, $key: 'fonts');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $schemas_colors: map-get($map: $theme, $key: 'color_schemas');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fonts: map.get($map: $theme, $key: 'fonts');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $schemas_colors: map.get($map: $theme, $key: 'color_schemas');
 
   &.form-checkbox-no-check {
 
@@ -629,10 +632,10 @@
 
       &:checked {
         +label {
-          background-color: map-get($map: $colors, $key: 'main');
+          background-color: map.get($map: $colors, $key: 'main');
 
           @if ($schemas_colors =="default") {
-            color: map-get($map: $colors, $key: 'background_1');
+            color: map.get($map: $colors, $key: 'background_1');
           }
         }
       }
@@ -646,7 +649,7 @@
       position: relative;
 
       padding: 16px;
-      border-radius: map-get($map: $radius, $key: 'medium') - 4px;
+      border-radius: map.get($map: $radius, $key: 'medium') - 4px;
 
       white-space: pre-wrap;
       word-wrap: break-word;
@@ -656,17 +659,17 @@
         background-color .3s ease-in-out;
 
       &:hover {
-        background-color: map-get($map: $colors, $key: 'background_2');
+        background-color: map.get($map: $colors, $key: 'background_2');
       }
     }
   }
 }
 
 @mixin radio-line($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fonts: map-get($map: $theme, $key: 'fonts');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $schemas_colors: map-get($map: $theme, $key: 'color_schemas');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fonts: map.get($map: $theme, $key: 'fonts');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $schemas_colors: map.get($map: $theme, $key: 'color_schemas');
 
   &.form-radio-no-check {
 
@@ -675,10 +678,10 @@
 
       &:checked {
         +label {
-          background-color: map-get($map: $colors, $key: 'main');
+          background-color: map.get($map: $colors, $key: 'main');
 
           @if ($schemas_colors =="default") {
-            color: map-get($map: $colors, $key: 'background_1');
+            color: map.get($map: $colors, $key: 'background_1');
           }
         }
       }
@@ -692,7 +695,7 @@
       position: relative;
 
       padding: 16px;
-      border-radius: map-get($map: $radius, $key: 'medium') - 4px;
+      border-radius: map.get($map: $radius, $key: 'medium') - 4px;
 
       white-space: pre-wrap;
       word-wrap: break-word;
@@ -702,7 +705,7 @@
         background-color .3s ease-in-out;
 
       &:hover {
-        background-color: map-get($map: $colors, $key: 'background_2');
+        background-color: map.get($map: $colors, $key: 'background_2');
       }
     }
   }
@@ -747,9 +750,9 @@
 }
 
 @mixin password($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.form-password {
     display: grid;
@@ -758,21 +761,21 @@
 
     input[type="text"] {
       border-radius:
-        (map-get($map: $radius, $key: 'small') - 4px) 0 0 (map-get($map: $radius, $key: 'small') - 4px);
-      background-color: map-get($map: $colors, $key: 'main');
+        (map.get($map: $radius, $key: 'small') - 4px) 0 0 (map.get($map: $radius, $key: 'small') - 4px);
+      background-color: map.get($map: $colors, $key: 'main');
 
-      color: map-get($map: $colors, $key: 'background_1');
+      color: map.get($map: $colors, $key: 'background_1');
 
       +.password-switch {
         border-radius:
-          0 (map-get($map: $radius, $key: 'small') - 4px) (map-get($map: $radius, $key: 'small') - 4px) 0;
-        background: map-get($map: $colors, $key: 'main');
+          0 (map.get($map: $radius, $key: 'small') - 4px) (map.get($map: $radius, $key: 'small') - 4px) 0;
+        background: map.get($map: $colors, $key: 'main');
 
         &:focus,
         &:target,
         &:hover {
           outline: none;
-          background-color: map-get($map: $colors, $key: 'content');
+          background-color: map.get($map: $colors, $key: 'content');
         }
       }
     }
@@ -782,14 +785,14 @@
       align-content: center;
       justify-content: center;
 
-      border-radius: map-get($map: $radius, $key: 'small') - 4px;
-      background-color: map-get($map: $colors, $key: 'content');
+      border-radius: map.get($map: $radius, $key: 'small') - 4px;
+      background-color: map.get($map: $colors, $key: 'content');
       border: none;
       padding: 0;
       outline: none;
       cursor: pointer;
 
-      color: map-get($map: $colors, $key: 'background_1');
+      color: map.get($map: $colors, $key: 'background_1');
       transition:
         background-color .3s ease-in-out;
 
@@ -797,20 +800,20 @@
       &:target,
       &:hover {
         outline: none;
-        background-color: map-get($map: $colors, $key: 'main');
+        background-color: map.get($map: $colors, $key: 'main');
       }
     }
   }
 }
 
 @mixin dragAndDrop($theme) {
-  $colors: map-get($theme, 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($theme, 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.dnd-container {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    border-radius: map-get($map: $radius, $key: 'medium');
+    border-radius: map.get($map: $radius, $key: 'medium');
   }
 
   &.upload-progress {
@@ -818,8 +821,8 @@
 
     position: relative;
 
-    border: 2px solid map-get($map: $colors, $key: 'content');
-    border-radius: map-get($map: $radius, $key: 'medium');
+    border: 2px solid map.get($map: $colors, $key: 'content');
+    border-radius: map.get($map: $radius, $key: 'medium');
     padding: 16px;
     overflow: hidden;
 
@@ -832,7 +835,7 @@
       z-index: -1;
 
       width: 0%;
-      background: map-get($map: $colors, $key: 'background_2');
+      background: map.get($map: $colors, $key: 'background_2');
     }
 
     .upload-progress-label {
@@ -851,8 +854,8 @@
     row-gap: 8px;
     justify-content: stretch;
 
-    background: map-get($colors, 'background_2');
-    border-radius: map-get($map: $radius, $key: 'medium') - 4px;
+    background: map.get($colors, 'background_2');
+    border-radius: map.get($map: $radius, $key: 'medium') - 4px;
 
     input {
       display: none;
@@ -863,7 +866,7 @@
       justify-content: center;
       justify-items: center;
 
-      border-radius: map-get($map: $radius, $key: 'medium') - 8px;
+      border-radius: map.get($map: $radius, $key: 'medium') - 8px;
       padding: 32px;
 
       p {
@@ -907,8 +910,8 @@
 
       z-index: 2;
       pointer-events: none;
-      background: rgba($color: map-get($map: $colors, $key: 'main'), $alpha: .4);
-      border-radius: map-get($map: $radius, $key: 'medium') - 4px;
+      background: rgba($color: map.get($map: $colors, $key: 'main'), $alpha: .4);
+      border-radius: map.get($map: $radius, $key: 'medium') - 4px;
 
       p {
         margin: 0;
@@ -925,8 +928,8 @@
       justify-content: center;
       justify-items: center;
 
-      background: map-get($map: $colors, $key: 'background_2');
-      border-radius: map-get($map: $radius, $key: 'medium') - 4px;
+      background: map.get($map: $colors, $key: 'background_2');
+      border-radius: map.get($map: $radius, $key: 'medium') - 4px;
 
       p {
         margin: 0;
@@ -938,8 +941,8 @@
 }
 
 @mixin datepicker($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.datepicker-root-input {
     display: grid;
@@ -959,11 +962,11 @@
 
     z-index: 2;
 
-    border-color: rgba(map-get($colors, "content"), .3);
+    border-color: rgba(map.get($colors, "content"), .3);
     border-width: 1px;
     border-style: solid;
-    border-radius: map-get($map: $radius, $key: 'small');
-    background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+    border-radius: map.get($map: $radius, $key: 'small');
+    background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
     box-shadow: 0 8px 12px rgba($color: #000000, $alpha: .2);
     padding: 8px 0;
 
@@ -993,8 +996,8 @@
         height: 32px;
         border-width: 1px;
         border-style: solid;
-        border-color: rgba(map-get($colors, "content"), .3);
-        border-radius: map-get($map: $radius, $key: "small") - 4px;
+        border-color: rgba(map.get($colors, "content"), .3);
+        border-radius: map.get($map: $radius, $key: "small") - 4px;
         box-sizing: border-box;
       }
 
@@ -1003,15 +1006,15 @@
         box-sizing: border-box;
         border-width: 1px;
         border-style: solid;
-        border-color: rgba(map-get($colors, "content"), .3);
-        border-radius: map-get($map: $radius, $key: "small") - 4px;
+        border-color: rgba(map.get($colors, "content"), .3);
+        border-radius: map.get($map: $radius, $key: "small") - 4px;
         padding: 0 12px;
         margin: 0;
 
         cursor: pointer;
 
         &:hover {
-          background-color: rgba(map-get($colors, 'content'), $alpha: .2);
+          background-color: rgba(map.get($colors, 'content'), $alpha: .2);
         }
       }
 
@@ -1027,15 +1030,15 @@
         box-sizing: border-box;
         border-width: 1px;
         border-style: solid;
-        border-color: rgba(map-get($colors, "content"), .3);
-        border-radius: map-get($map: $radius, $key: "small") - 4px;
+        border-color: rgba(map.get($colors, "content"), .3);
+        border-radius: map.get($map: $radius, $key: "small") - 4px;
         padding: 0;
         margin: 0;
 
         cursor: pointer;
 
         &:hover {
-          background-color: rgba(map-get($colors, 'content'), $alpha: .2);
+          background-color: rgba(map.get($colors, 'content'), $alpha: .2);
         }
       }
     }
@@ -1051,8 +1054,8 @@
       margin-top: 8px;
       margin-left: 8px;
       margin-right: 8px;
-      border-radius: map-get($map: $radius, $key: 'small') - 4px;
-      background: map-get($map: $colors, $key: "background_1");
+      border-radius: map.get($map: $radius, $key: 'small') - 4px;
+      background: map.get($map: $colors, $key: "background_1");
 
       .datepicker-day-label {
         display: grid;
@@ -1077,7 +1080,7 @@
         box-sizing: border-box;
         border-width: 1px;
         border-style: solid;
-        border-color: rgba(map-get($colors, "content"), .3);
+        border-color: rgba(map.get($colors, "content"), .3);
         border-radius: 0;
         padding: 0 8px;
         cursor: pointer;
@@ -1086,25 +1089,25 @@
         font-feature-settings: "tnum" 1, "dgsp";
 
         &:hover {
-          background-color: rgba(map-get($colors, "main"), .3);
+          background-color: rgba(map.get($colors, "main"), .3);
         }
 
         &.active {
-          background-color: map-get($map: $colors, $key: "main");
+          background-color: map.get($map: $colors, $key: "main");
         }
 
         &.today {
-          color: map-get($map: $colors, $key: "main");
+          color: map.get($map: $colors, $key: "main");
 
           &.active {
-            color: map-get($map: $colors, $key: "content");
+            color: map.get($map: $colors, $key: "content");
           }
         }
 
         &:disabled {
           cursor: not-allowed;
           opacity: .6;
-          background-color: rgba(map-get($colors, "content"), .3);
+          background-color: rgba(map.get($colors, "content"), .3);
         }
       }
     }

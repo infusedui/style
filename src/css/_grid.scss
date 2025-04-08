@@ -1,9 +1,10 @@
+@use "sass:map";
 @use "sass:math";
 
 @mixin base($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $shades: map-get($map: $theme, $key: 'shades');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $shades: map.get($map: $theme, $key: 'shades');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.grid-init {
     display: grid;
@@ -126,15 +127,15 @@
 
     // Radius 
     &.radius-small {
-      border-radius: map-get($map: $radius, $key: 'small');
+      border-radius: map.get($map: $radius, $key: 'small');
     }
 
     &.radius-medium {
-      border-radius: map-get($map: $radius, $key: 'medium');
+      border-radius: map.get($map: $radius, $key: 'medium');
     }
 
     &.radius-large {
-      border-radius: map-get($map: $radius, $key: 'large');
+      border-radius: map.get($map: $radius, $key: 'large');
     }
 
     // Overflow
@@ -148,24 +149,24 @@
     }
 
     &.background-color-main {
-      background-color: map-get($map: $colors, $key: 'main');
+      background-color: map.get($map: $colors, $key: 'main');
     }
 
     &.background-color-content {
-      background-color: map-get($map: $colors, $key: 'content');
-      color: map-get($map: $colors, $key: 'background_1');
+      background-color: map.get($map: $colors, $key: 'content');
+      color: map.get($map: $colors, $key: 'background_1');
     }
 
     &.background-color-bg1 {
-      background-color: map-get($map: $colors, $key: 'background_1');
+      background-color: map.get($map: $colors, $key: 'background_1');
     }
 
     &.background-color-bg2 {
-      background-color: map-get($map: $colors, $key: 'background_2');
+      background-color: map.get($map: $colors, $key: 'background_2');
     }
 
     &.background-color-bg3 {
-      background-color: map-get($map: $colors, $key: 'background_3');
+      background-color: map.get($map: $colors, $key: 'background_3');
     }
 
     // Row size
@@ -327,9 +328,9 @@
 }
 
 @mixin border($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $shades: map-get($map: $theme, $key: 'shades');
-  $brand: map-get($map: $theme, $key: 'brand');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $shades: map.get($map: $theme, $key: 'shades');
+  $brand: map.get($map: $theme, $key: 'brand');
 
   &.grid-init.bordered {
     border-style: solid;

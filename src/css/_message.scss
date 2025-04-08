@@ -1,12 +1,14 @@
+@use "sass:color";
+@use "sass:map";
 @mixin global($theme) {}
 
 @mixin alert($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $brand: map-get($map: $theme, $key: 'brand');
-  $shades: map-get($map: $theme, $key: 'shades');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
-  $color_schemas: map-get($map: $theme, $key: 'color_schemas');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $brand: map.get($map: $theme, $key: 'brand');
+  $shades: map.get($map: $theme, $key: 'shades');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
+  $color_schemas: map.get($map: $theme, $key: 'color_schemas');
 
   &.message-container {
     display: grid;
@@ -18,12 +20,12 @@
 
     box-sizing: border-box;
     min-height: 48px;
-    border-radius: map-get($map: $radius, $key: 'small');
+    border-radius: map.get($map: $radius, $key: 'small');
     border-width: 1px;
     border-style: solid;
-    border-color: map-get($map: $colors, $key: 'content');
+    border-color: map.get($map: $colors, $key: 'content');
     padding: 10px;
-    background: map-get($map: $colors, $key: 'background_1');
+    background: map.get($map: $colors, $key: 'background_1');
 
     &.format-icon {
       grid-template-columns: 40px 1fr;
@@ -75,7 +77,7 @@
 
     &.size-small {
       p {
-        font-size: map-get($map: $fontsize, $key: 'small');
+        font-size: map.get($map: $fontsize, $key: 'small');
       }
     }
 
@@ -87,10 +89,10 @@
     @each $name, $value in $shades {
       &.color-#{$name} {
         border-color: $value;
-        background-color: lighten($value, 30%);
+        background-color: color.adjust($value, $lightness: 30%);
 
         @if($color_schemas =="dark") {
-          background-color: darken($value, 60%);
+          background-color: color.adjust($value, $lightness: -60%);
         }
       }
     }
@@ -100,11 +102,11 @@
         border-color: $value;
 
         @if($color_schemas =="dark") {
-          background-color: darken($value, 60%);
+          background-color: color.adjust($value, $lightness: -60%);
         }
 
         @else {
-          background-color: lighten($value, 30%);
+          background-color: color.adjust($value, $lightness: 30%);
         }
       }
     }
@@ -114,11 +116,11 @@
         border-color: $value;
 
         @if($color_schemas =="dark") {
-          background-color: darken($value, 60%);
+          background-color: color.adjust($value, $lightness: -60%);
         }
 
         @else {
-          background-color: lighten($value, 30%);
+          background-color: color.adjust($value, $lightness: 30%);
         }
       }
     }
@@ -127,10 +129,10 @@
 }
 
 @mixin toast($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $fontsize: map-get($map: $theme, $key: 'fontsize');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $color_schemas: map-get($map: $theme, $key: "color_schemas");
+  $colors: map.get($map: $theme, $key: 'colors');
+  $fontsize: map.get($map: $theme, $key: 'fontsize');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $color_schemas: map.get($map: $theme, $key: "color_schemas");
 
   &.toast-root {
     position: fixed;
@@ -161,9 +163,9 @@
     position: relative;
 
     box-shadow: 0 4px 32px rgba($color: #000000, $alpha: .1);
-    border: 1px solid map-get($map: $colors, $key: 'content');
-    background-color: map-get($map: $colors, $key: 'background_1');
-    border-radius: map-get($map: $radius, $key: 'small');
+    border: 1px solid map.get($map: $colors, $key: 'content');
+    background-color: map.get($map: $colors, $key: 'background_1');
+    border-radius: map.get($map: $radius, $key: 'small');
 
     p {
       padding: 0;
@@ -174,20 +176,20 @@
       padding: 8px;
       padding-bottom: 0px;
 
-      font-size: map-get($map: $fontsize, $key: 'text');
+      font-size: map.get($map: $fontsize, $key: 'text');
       font-weight: 600;
     }
 
     @each $name, $value in $colors {
       &.color-#{$name} {
-        background-color: lighten($color: $value, $amount: 25%);
+        background-color: color.adjust($color: $value, $lightness: 25%);
         border-color: $value;
 
-        color: map-get($map: $colors, $key: "content");
+        color: map.get($map: $colors, $key: "content");
 
         @if($color_schemas =="dark") {
-          background-color: darken($color: $value, $amount: 55%);
-          color: map-get($map: $colors, $key: "content");
+          background-color: color.adjust($color: $value, $lightness: -55%);
+          color: map.get($map: $colors, $key: "content");
         }
       }
     }
@@ -243,7 +245,7 @@
 
     .loader {
       circle {
-        stroke: map-get($colors, 'content');
+        stroke: map.get($colors, 'content');
       }
     }
 
@@ -262,8 +264,8 @@
 }
 
 @mixin toastPulse($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.toast-container-pulse {
     position: fixed;
@@ -277,7 +279,7 @@
     justify-content: center;
 
     width: 320px;
-    border-radius: map-get($map: $radius, $key: 'small');
+    border-radius: map.get($map: $radius, $key: 'small');
     margin: auto;
     transform: translateX(-50%);
 
@@ -291,8 +293,8 @@
       position: relative;
 
       box-shadow: 0 4px 12px rgba($color: #000000, $alpha: .2);
-      border: 2px solid map-get($map: $colors, $key: 'punch');
-      border-radius: map-get($map: $radius, $key: 'medium');
+      border: 2px solid map.get($map: $colors, $key: 'punch');
+      border-radius: map.get($map: $radius, $key: 'medium');
       padding: 16px;
 
       &:before,
@@ -307,7 +309,7 @@
         aspect-ratio: 1/1;
         transform: scale(0);
         transform-origin: 50% 50%;
-        background-color: map-get($map: $colors, $key: 'punch');
+        background-color: map.get($map: $colors, $key: 'punch');
         opacity: 0;
         pointer-events: none;
 
@@ -360,7 +362,7 @@
             align-content: center;
 
             width: 48px;
-            border-radius: map-get($map: $radius, $key: 'medium') - 8px;
+            border-radius: map.get($map: $radius, $key: 'medium') - 8px;
             opacity: .6;
 
             transition:
@@ -371,11 +373,11 @@
             }
 
             &:first-child {
-              background-color: map-get($map: $colors, $key: 'positive');
+              background-color: map.get($map: $colors, $key: 'positive');
             }
 
             &:last-child {
-              background-color: map-get($map: $colors, $key: 'negative');
+              background-color: map.get($map: $colors, $key: 'negative');
             }
           }
         }
@@ -406,22 +408,22 @@
         }
       }
 
-      background: map-get($map: $colors, $key: 'background_2');
+      background: map.get($map: $colors, $key: 'background_2');
 
       &.level-negative {
-        background: map-get($map: $colors, $key: 'negative');
+        background: map.get($map: $colors, $key: 'negative');
       }
 
       &.level-positive {
-        background: map-get($map: $colors, $key: 'positive');
+        background: map.get($map: $colors, $key: 'positive');
       }
 
       &.level-neutral {
-        background: map-get($map: $colors, $key: 'neutral');
+        background: map.get($map: $colors, $key: 'neutral');
       }
 
       &.level-punch {
-        background: map-get($map: $colors, $key: 'punch');
+        background: map.get($map: $colors, $key: 'punch');
       }
     }
   }

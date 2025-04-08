@@ -1,10 +1,12 @@
+@use "sass:color";
+@use "sass:map";
 @use "sass:math";
 
 @mixin global($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
-  $schemas_radius: map-get($map: $theme, $key: 'radius_schemas');
-  $color_schemas: map-get($map: $theme, $key: 'color_schemas');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
+  $schemas_radius: map.get($map: $theme, $key: 'radius_schemas');
+  $color_schemas: map.get($map: $theme, $key: 'color_schemas');
 
   &.aside-menu {
 
@@ -12,18 +14,18 @@
       li {
         height: auto;
         list-style: none;
-        border-radius: map-get($map: $radius, $key: 'small') + 2px;
+        border-radius: map.get($map: $radius, $key: 'small') + 2px;
         border: 1px solid transparent;
 
         transition:
           border-color .3s ease-in-out;
 
         &.open {
-          border-color: map-get($map: $colors, $key: 'main');
-          background-color: lighten($color: map-get($colors, "background_1"), $amount: 5%);
+          border-color: map.get($map: $colors, $key: 'main');
+          background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: 5%);
 
           @if($color_schemas =="dark") {
-            background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+            background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
           }
         }
       }
@@ -53,7 +55,7 @@
 
         height: 48px;
         background: none;
-        border-radius: map-get($map: $radius, $key: 'small');
+        border-radius: map.get($map: $radius, $key: 'small');
         border-width: 1px;
         border-style: solid;
         border-color: transparent;
@@ -94,13 +96,13 @@
         &:target,
         &:focus {
           outline: none;
-          border-color: rgba(map-get($colors, "content"), .3);
-          background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+          border-color: rgba(map.get($colors, "content"), .3);
+          background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
         }
 
         &.active {
           .icon {
-            color: map-get($map: $colors, $key: 'main');
+            color: map.get($map: $colors, $key: 'main');
           }
 
           &:after {

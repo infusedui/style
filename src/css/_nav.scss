@@ -1,5 +1,7 @@
+@use "sass:color";
+@use "sass:map";
 @mixin header($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
+  $colors: map.get($map: $theme, $key: 'colors');
 
   &.header-nav {
     display: grid;
@@ -67,11 +69,11 @@
 
         &.hightlight {
           &:before {
-            background-color: map-get($map: $colors, $key: 'main');
+            background-color: map.get($map: $colors, $key: 'main');
           }
 
           &:hover {
-            color: map-get($map: $colors, $key: 'background_1');
+            color: map.get($map: $colors, $key: 'background_1');
           }
         }
 
@@ -85,7 +87,7 @@
           height: 4px;
           width: 40px;
           border-radius: 8px;
-          background: map-get($map: $colors, $key: 'main');
+          background: map.get($map: $colors, $key: 'main');
           opacity: 0;
           transform:
             translateX(-50%) translateY(100%);
@@ -111,7 +113,7 @@
 
           content: '';
           height: 40px;
-          background: map-get($map: $colors, $key: 'background_2');
+          background: map.get($map: $colors, $key: 'background_2');
           transform:
             translateY(-30%);
           transform-origin: center center;
@@ -130,8 +132,8 @@
 }
 
 @mixin pagination($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.pagination {
     .cta-container {
@@ -155,21 +157,21 @@
       min-width: 64px;
       height: 40px;
       box-sizing: border-box;
-      border: 1px solid rgba(map-get($colors, "content"), .3);
+      border: 1px solid rgba(map.get($colors, "content"), .3);
       border-radius: 0;
-      background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+      background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
       margin-left: -1px;
 
       &:hover {
-        background-color: rgba(map-get($colors, 'content'), $alpha: .2);
+        background-color: rgba(map.get($colors, 'content'), $alpha: .2);
       }
     }
   }
 }
 
 @mixin tab($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.tab-nav {
     display: grid;
@@ -181,8 +183,8 @@
       grid-auto-columns: 1fr;
     }
 
-    background: map-get($map: $colors, $key: 'background_2');
-    border-radius: map-get($map: $radius, $key: 'small');
+    background: map.get($map: $colors, $key: 'background_2');
+    border-radius: map.get($map: $radius, $key: 'small');
     padding: 2px;
 
     a {
@@ -191,21 +193,21 @@
       align-items: center;
 
       padding: 12px 24px;
-      border-radius: map-get($map: $radius, $key: 'small') - 2px;
+      border-radius: map.get($map: $radius, $key: 'small') - 2px;
 
-      color: map-get($map: $colors, $key: 'content');
+      color: map.get($map: $colors, $key: 'content');
 
       transition:
         background-color .3s ease-in-out,
         color .3s ease-in-out;
 
       &:hover {
-        background-color: map-get($map: $colors, $key: 'background_3');
+        background-color: map.get($map: $colors, $key: 'background_3');
       }
 
       &.active {
-        background-color: map-get($map: $colors, $key: 'background_1');
-        color: map-get($map: $colors, $key: 'main');
+        background-color: map.get($map: $colors, $key: 'background_1');
+        color: map.get($map: $colors, $key: 'main');
       }
     }
   }

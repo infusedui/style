@@ -1,8 +1,9 @@
+@use "sass:map";
 @mixin global($theme) {
-  $colors: map-get($theme, 'colors');
-  $schemas: map-get($theme, 'schemas');
-  $shades: map-get($map: $theme, $key: 'shades');
-  $brand: map-get($map: $theme, $key: 'brand');
+  $colors: map.get($theme, 'colors');
+  $schemas: map.get($theme, 'schemas');
+  $shades: map.get($map: $theme, $key: 'shades');
+  $brand: map.get($map: $theme, $key: 'brand');
 
   &.timeline {
     position: relative;
@@ -73,7 +74,7 @@
           width: 16px;
           height: 16px;
           border-radius: 50%;
-          background: map-get($map: $colors, $key: 'content');
+          background: map.get($map: $colors, $key: 'content');
 
           @media all and (max-width: 768px) {
             left: -6px;

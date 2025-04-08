@@ -1,3 +1,4 @@
+@use "sass:map";
 @use "sass:math";
 
 @mixin global($theme) {
@@ -16,7 +17,7 @@
 }
 
 @mixin error($theme) {
-  $colors: map-get($theme, 'colors');
+  $colors: map.get($theme, 'colors');
 
   &.animation-error {
     animation: error ease-in-out .4s;
@@ -54,7 +55,7 @@
 }
 
 @mixin underlined($theme) {
-  $colors: map-get($theme, 'colors');
+  $colors: map.get($theme, 'colors');
 
   @keyframes underlined {
     0% {
@@ -79,7 +80,7 @@
 }
 
 @mixin bounce($theme) {
-  $colors: map-get($theme, 'colors');
+  $colors: map.get($theme, 'colors');
 
   &.animation-bounce-top {
     animation: bounceTop ease-in-out .4s;

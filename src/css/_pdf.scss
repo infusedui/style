@@ -1,12 +1,13 @@
+@use "sass:map";
 
 @mixin viewer($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
-  $radius: map-get($map: $theme, $key: 'radius');
+  $colors: map.get($map: $theme, $key: 'colors');
+  $radius: map.get($map: $theme, $key: 'radius');
 
   &.pdf-viewer {
     position: relative;
 
-    border-radius: map-get($map: $radius, $key: 'small');
+    border-radius: map.get($map: $radius, $key: 'small');
     overflow: hidden;
 
     .pdf-controls {
@@ -18,9 +19,9 @@
       align-content: center;
 
       margin-top: 16px;
-      background: map-get($map: $colors, $key: 'background_1');
+      background: map.get($map: $colors, $key: 'background_1');
       padding: 8px;
-      border-radius: map-get($map: $radius, $key: 'medium');
+      border-radius: map.get($map: $radius, $key: 'medium');
 
       p { margin: 0; padding: 0; }
     }

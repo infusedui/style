@@ -1,12 +1,12 @@
-@import 'theme/default';
-@import 'theme/dtc';
-@import 'theme/haltero';
-@import 'theme/pooks';
-@import 'theme/red';
+@use 'theme/default';
+@use 'theme/dtc';
+@use 'theme/haltero';
+@use 'theme/pooks';
+@use 'theme/red';
 
 // Dark
-@import 'theme/default_dark';
-@import 'theme/dtc_dark';
-@import 'theme/haltero_dark';
-@import 'theme/pooks_dark';
-@import 'theme/red_dark';
+@use 'theme/default_dark';
+@use 'theme/dtc_dark';
+@use 'theme/haltero_dark';
+@use 'theme/pooks_dark';
+@use 'theme/red_dark';

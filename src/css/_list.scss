@@ -1,5 +1,6 @@
+@use "sass:map";
 @mixin point($theme) {
-  $colors: map-get($map: $theme, $key: 'colors');
+  $colors: map.get($map: $theme, $key: 'colors');
 
   &:is(ul).point-list {
     list-style: none;
@@ -20,7 +21,7 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        background: map-get($map: $colors, $key: "background_3");
+        background: map.get($map: $colors, $key: "background_3");
       }
 
       &:after {
@@ -31,7 +32,7 @@
         content: "";
         width: 2px;
         height: 100%;
-        background: map-get($map: $colors, $key: "background_3");
+        background: map.get($map: $colors, $key: "background_3");
       }
 
       h5,

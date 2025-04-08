@@ -1,6 +1,8 @@
+@use "sass:color";
+@use "sass:map";
 @mixin container($theme) {
-  $radius: map-get($map: $theme, $key: "radius");
-  $colors: map-get($map: $theme, $key: "colors");
+  $radius: map.get($map: $theme, $key: "radius");
+  $colors: map.get($map: $theme, $key: "colors");
 
   &.card-container {
     display: grid;
@@ -14,22 +16,22 @@
       .card {
         border-radius: 0;
         margin-left: -1px;
-        border-color: rgba(map-get($colors, "content"), .3);
-        background-color: darken($color: map-get($colors, "background_1"), $amount: 5%);
+        border-color: rgba(map.get($colors, "content"), .3);
+        background-color: color.adjust($color: map.get($colors, "background_1"), $lightness: -5%);
 
         &:hover {
-          background-color: rgba(map-get($colors, 'content'), $alpha: .1);
+          background-color: rgba(map.get($colors, 'content'), $alpha: .1);
         }
 
         &:first-child {
           border-radius:
-            map-get($map: $radius, $key: "small") 0 0 map-get($map: $radius, $key: "small");
+            map.get($map: $radius, $key: "small") 0 0 map.get($map: $radius, $key: "small");
           margin-left: 0;
         }
 
         &:last-child {
           border-radius:
-            0 map-get($map: $radius, $key: "small") map-get($map: $radius, $key: "small") 0;
+            0 map.get($map: $radius, $key: "small") map.get($map: $radius, $key: "small") 0;
         }
       }
     }
@@ -37,9 +39,9 @@
 }
 
 @mixin card($theme) {
-  $colors: map-get($map: $theme, $key: "colors");
-  $color_schemas: map-get($map: $theme, $key: "color_schemas");
-  $radius: map-get($map: $theme, $key: "radius");
+  $colors: map.get($map: $theme, $key: "colors");
+  $color_schemas: map.get($map: $theme, $key: "color_schemas");
+  $radius: map.get($map: $theme, $key: "radius");
 
   a.card {
     transition:
@@ -49,11 +51,11 @@
 
     &:hover {
       @if($color_schemas =="dark") {
-        background-color: lighten($color: map-get($colors, 'background_2'), $amount: 5%);
+        background-color: color.adjust($color: map.get($colors, 'background_2'), $lightness: 5%);
       }
 
       @else {
-        background-color: darken($color: map-get($colors, 'background_2'), $amount: 5%);
+        background-color: color.adjust($color: map.get($colors, 'background_2'), $lightness: -5%);
       }
     }
   }
@@ -62,12 +64,12 @@
     display: grid;
     row-gap: 24px;
 
-    border-radius: map-get($map: $radius, $key: 'small');
+    border-radius: map.get($map: $radius, $key: 'small');
     border: 1px solid transparent;
-    background: map-get($map: $colors, $key: 'background_2');
+    background: map.get($map: $colors, $key: 'background_2');
     padding: 16px;
 
-    color: map-get($map: $colors, $key: 'content');
+    color: map.get($map: $colors, $key: 'content');
     text-decoration: none;
 
     &.format-square {
@@ -75,7 +77,7 @@
     }
 
     &.active {
-      border: 1px solid map-get($map: $colors, $key: 'main');
+      border: 1px solid map.get($map: $colors, $key: 'main');
     }
 
     &.horizontal-align-center {
